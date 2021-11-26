@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".MainActivity"
+    android:background="@drawable/fondo1"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="110dp"
+            android:src="@drawable/img_sesion"
+            android:layout_marginBottom="20dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/act1_texto_sesion"
+                android:textColor="@color/gray"
+                android:textSize="20sp"
+                android:textAlignment="center"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/act1_texto_cuenta"
+                android:textColor="@color/blue"
+                android:textSize="20sp"
+                android:textAlignment="textStart"
+                android:layout_marginStart="3dp"
+                android:textStyle="italic"
+                />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toEndOf="@+id/linearLayout"
+        tools:layout_editor_absoluteY="-16dp">
+
+
+
+        <EditText
+            android:id="@+id/campo1"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@color/gray"
+            android:hint="@string/act1_campo1"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+
+
+        <EditText
+            android:id="@+id/campo2"
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@color/gray"
+            android:hint="@string/act1_campo2"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:onClick="eventoBoton"
+            android:textSize="30sp"
+            android:textColor="@color/dark_gray"
+            android:text="@string/act1_texto_btn"
+            />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

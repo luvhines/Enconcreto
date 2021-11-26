@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Enconcreto</string>
+    <string name="act1_texto_titulo">Hola</string>
+    <string name="act1_texto_sesion">Inicia sesión o</string>
+    <string name="act1_texto_cuenta"> crea cuenta</string>
+    <string name="act1_texto1">Usuario</string>
+    <string name="act1_texto2">Contraseña</string>
+    <string name="act1_campo1">Ingrese Usuario</string>
+    <string name="act1_campo2">Ingrese Contraseña</string>
+    <string name="act1_texto_btn">Continuar</string>
+    <string name="act1_texto_error">Datos erroneos</string>
+    <string name="act2_hint_campo">Texto</string>
+    <string name="act2_texto_btn1">Crear tabla</string>
+    <string name="act2_texto_btn2">Guardar datos</string>
+    <string name="act2_texto_btn3">Configuración</string>
+    <string name="act2_texto_btn4">Acerca de</string>
+
+
+</resources>

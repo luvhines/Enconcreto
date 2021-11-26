@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo1"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="600dp"
+            android:layout_height="260dp"
+            android:layout_marginBottom="40dp"
+            android:src="@drawable/img_sesion" />
+
+        <TextView
+            android:layout_width="600dp"
+            android:layout_height="40dp"
+            android:text="@string/act1_texto1"
+            android:textColor="@color/gray"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/act1_campo1"
+            android:layout_width="600dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@color/gray"
+            android:hint="@string/act1_campo1"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="600dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="40dp"
+            android:text="@string/act1_texto2"
+            android:textColor="@color/gray"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/act1_campo2"
+            android:layout_width="600dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:background="@color/gray"
+            android:hint="@string/act1_campo2"
+            android:inputType="textPassword"
+            android:singleLine="true"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/act1_btn1"
+            android:layout_width="250dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
+            android:onClick="eventoBoton"
+            android:text="@string/act1_texto_btn"
+            android:textColor="@color/dark_gray"
+            android:textSize="30sp" />
+
+
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

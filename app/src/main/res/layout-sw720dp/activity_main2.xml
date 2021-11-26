@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/fondo_act_2"
+    tools:context=".MainActivity2">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ScrollView
+                android:id="@+id/scrollView2"
+                android:layout_width="match_parent"
+                android:layout_height="700dp"
+                android:layout_margin="10dp"
+                android:background="@color/white">
+
+                <EditText
+                    android:id="@+id/act2_campo1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:textSize="25sp"
+                    android:hint="@string/act2_hint_campo"/>
+
+            </ScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/act2_btn1"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:text="@string/act2_texto_btn1" />
+
+            <Button
+                android:id="@+id/act2_btn2"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:text="@string/act2_texto_btn2" />
+
+            <Button
+                android:id="@+id/act2_btn3"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+
+                android:text="@string/act2_texto_btn3" />
+
+            <Button
+                android:id="@+id/act2_btn4"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="2dp"
+                android:layout_weight="1"
+                android:textSize="25sp"
+                android:text="@string/act2_texto_btn4" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
