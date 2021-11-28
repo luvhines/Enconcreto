@@ -3,97 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo1"
     tools:context=".MainActivity">
 
-    <LinearLayout
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/container_1"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
-
-        <ImageView
-            android:layout_width="250dp"
-            android:layout_height="110dp"
-            android:layout_marginBottom="20dp"
-            android:src="@drawable/img_sesion" />
-
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:text="@string/act1_texto_titulo"
-            android:textColor="@color/gray"
-            android:textSize="30sp"
-            android:textAlignment="center"
-           />
-
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginBottom="20dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/act1_texto_sesion"
-                android:textColor="@color/gray"
-                android:textSize="20sp"
-                android:textAlignment="center"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/act1_texto_cuenta"
-                android:textColor="@color/blue"
-                android:textSize="20sp"
-                android:textAlignment="textStart"
-                android:layout_marginStart="3dp"
-                android:textStyle="italic"
-                />
-
-        </LinearLayout>
-
-        <EditText
-            android:id="@+id/act1_campo1"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="@color/gray"
-            android:hint="@string/act1_campo1"
-            android:singleLine="true"
-            android:textSize="20sp"
-            android:paddingLeft="5dp"/>
-
-
-
-        <EditText
-            android:id="@+id/act1_campo2"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:background="@color/gray"
-            android:hint="@string/act1_campo2"
-            android:inputType="textPassword"
-            android:singleLine="true"
-            android:textSize="20sp"
-            android:paddingLeft="5dp"/>
-
-        <Button
-            android:id="@+id/act1_btn1"
-            android:layout_width="200dp"
-            android:layout_height="60dp"
-            android:layout_marginTop="10dp"
-            android:onClick="eventoBoton"
-            android:text="@string/act1_texto_btn"
-            android:textColor="@color/dark_gray"
-            android:textSize="25sp"
-            />
-
-
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

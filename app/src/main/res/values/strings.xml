@@ -9,10 +9,51 @@
     <string name="act1_campo2">Enter Password</string>
     <string name="act1_texto_error">Wrong data</string>
     <string name="act1_texto_btn">Continue</string>
+    <string name="act1_texto_btn2">continue with Google</string>
     <string name="act2_hint_campo">Text</string>
     <string name="act2_texto_btn1">Create table</string>
     <string name="act2_texto_btn2">Save data</string>
     <string name="act2_texto_btn3">Setting</string>
     <string name="act2_texto_btn4">About</string>
+
+    <string name="registro_titulo">Create an account</string>
+    <string name="registro_nombre">Names</string>
+    <string name="registro_apellido">Surnames</string>
+    <string name="registro_correo">Email</string>
+    <string name="registro_contraseña">Password</string>
+    <string name="registro_politica">By creating an account, you accept our <b>Terms
+        of Use</b> and acknowledge having read our <b>Privacy Notice</b>.
+    </string>
+    <string name="registro_btn1">Create account</string>
+    <string name="registro_terminos_uso">Terms of use</string>
+    <string name="registro_politica_privacidad">Privacy policy</string>
+
+
+    <string name="privacidad_titulo">Privacy Policy</string>
+    <string name="texto_politica_privacidad">
+        Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a
+        type specimen book. It has survived not only five centuries, but also the
+        leap into electronic typesetting, remaining essentially unchanged. It was
+        popularised in the 1960s with the release of Letraset sheets containing Lorem
+        Ipsum passages, and more recently with desktop publishing software like Aldus
+        PageMaker including versions of Lorem Ipsum.
+
+        \n\nLorem Ipsum is simply dummy text of the printing and typesetting industry.
+        Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s,
+        when an unknown printer took a galley of type and scrambled it to make a
+        type specimen book. It has survived not only five centuries, but also the
+        leap into electronic typesetting, remaining essentially unchanged. It was
+        popularised in the 1960s with the release of Letraset sheets containing Lorem
+        Ipsum passages, and more recently with desktop publishing software like Aldus
+        PageMaker including versions of Lorem Ipsum.
+    </string>
+    <string name="chk_aceptar">To accept</string>
+    <string name="chk_negar">I do not accept</string>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
