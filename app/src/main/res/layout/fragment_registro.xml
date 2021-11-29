@@ -29,6 +29,7 @@
         android:layout_marginTop="20dp">
 
         <EditText
+            android:id="@+id/reg_nombre"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -38,6 +39,7 @@
             android:autofillHints="username"/>
 
         <EditText
+            android:id="@+id/reg_apellido"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
@@ -49,6 +51,7 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/reg_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/registro_correo"
@@ -58,6 +61,7 @@
         android:autofillHints="emailAddress"/>
 
     <EditText
+        android:id="@+id/reg_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="@string/registro_contraseña"
@@ -79,6 +83,7 @@
 
 
     <Button
+        android:id="@+id/btn_crear_registrp"
         android:layout_width="match_parent"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"

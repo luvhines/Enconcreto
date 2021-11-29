@@ -3,11 +3,17 @@ package com.example.praxis;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.example.praxis.entidades.Usuarios;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,7 +22,11 @@ import android.widget.TextView;
  */
 public class RegistroFragment extends Fragment implements View.OnClickListener{
 
-    TextView terminosUso, politicaPrivacidad;
+    TextView terminosUso, politicaPrivacidad , campoNombre, campoApellido, campoEmail, campoPassword;
+    CheckBox ckPrivacidadAceptar , ckPrivacidadNegar;
+    private boolean aceptarPoliticas;
+
+    Button btnCrearCuenta;
 
 
     // TODO: Rename parameter arguments, choose names that match
@@ -65,9 +75,20 @@ public class RegistroFragment extends Fragment implements View.OnClickListener{
         // Inflate the layout for this fragment
         View fragmento =  inflater.inflate(R.layout.fragment_registro, container, false);
 
+
+        //Campos que deben ser guardados en la base de datos
+        campoNombre = (TextView) fragmento.findViewById(R.id.reg_nombre);
+        campoApellido = (TextView) fragmento.findViewById(R.id.reg_apellido);
+        campoEmail = (TextView) fragmento.findViewById(R.id.reg_email);
+        campoPassword = (TextView) fragmento.findViewById(R.id.reg_password);
+        btnCrearCuenta = (Button) fragmento.findViewById(R.id.btn_crear_registrp);
+
+        //enlaces a los fragmentos de politicas
         terminosUso = (TextView) fragmento.findViewById(R.id.reg_term_uso);
         politicaPrivacidad = (TextView) fragmento.findViewById(R.id.reg_pol_privacidad);
 
+        //escuchadores
+        btnCrearCuenta.setOnClickListener(this);
         terminosUso.setOnClickListener(this);
         politicaPrivacidad.setOnClickListener(this);
 
@@ -76,11 +97,28 @@ public class RegistroFragment extends Fragment implements View.OnClickListener{
 
     @Override
     public void onClick(View v) {
+        //Creamosuna isntancia a la bd
+        AppDataBase db;
 
         switch (v.getId())
         {
-            case R.id.reg_term_uso:;break;
+            case R.id.btn_crear_registrp:
+                //Guardamos los datos en la base de datos
+                db = Room.databaseBuilder(this.getContext(), AppDataBase.class,
+                        "enconcretoDB").allowMainThreadQueries().build();
+                Usuarios usuario = new Usuarios(campoNombre.getText().toString(),
+                        campoApellido.getText().toString(),
+                        campoEmail.getText().toString(),
+                        campoPassword.getText().toString());
+                db.usuariosDao().insert(usuario);
+
+                Toast.makeText(this.getContext(), "Datos Agregados", Toast.LENGTH_LONG).show();
+                ;break;
+            case R.id.reg_term_uso:
+
+                ;break;
             case R.id.reg_pol_privacidad:
+                //Cargamos el fragment de politica de privacidad
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .setReorderingAllowed(true)
                         .replace(R.id.container_1, PoliticaPrivacidadFragment.class, null,"politicaPrivacidad")
