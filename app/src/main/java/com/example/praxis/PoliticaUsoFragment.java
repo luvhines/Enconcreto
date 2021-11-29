@@ -13,7 +13,7 @@ import android.view.ViewGroup;
  * Use the {@link PoliticaUsoFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class PoliticaUsoFragment extends Fragment {
+public class PoliticaUsoFragment extends Fragment implements View.OnClickListener{
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -59,6 +59,13 @@ public class PoliticaUsoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_politica_uso, container, false);
+        View fragment = inflater.inflate(R.layout.fragment_politica_uso, container, false);
+
+        return fragment;
+    }
+
+    @Override
+    public void onClick(View v) {
+
     }
 }

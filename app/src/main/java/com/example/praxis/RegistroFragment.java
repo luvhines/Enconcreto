@@ -115,7 +115,11 @@ public class RegistroFragment extends Fragment implements View.OnClickListener{
                 Toast.makeText(this.getContext(), "Datos Agregados", Toast.LENGTH_LONG).show();
                 ;break;
             case R.id.reg_term_uso:
-
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .setReorderingAllowed(true)
+                        .replace(R.id.container_1, PoliticaUsoFragment.class, null,"politicaUso")
+                        .addToBackStack("politicaUso")
+                        .commit();
                 ;break;
             case R.id.reg_pol_privacidad:
                 //Cargamos el fragment de politica de privacidad
