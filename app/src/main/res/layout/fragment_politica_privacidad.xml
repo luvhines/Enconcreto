@@ -51,15 +51,21 @@
             android:textSize="15sp"
             android:layout_marginEnd="30dp"/>
 
-        <CheckBox
+<!--        <CheckBox
             android:id="@+id/privacidad_check_negar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="No acepto"
             android:textSize="15sp"
-            android:layout_marginStart="30dp"/>
+            android:layout_marginStart="30dp"/>-->
+
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/priv_btn_volver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="volver"/>
 
 </LinearLayout>

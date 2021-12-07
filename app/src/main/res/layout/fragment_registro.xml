@@ -34,6 +34,7 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:hint="@string/registro_nombre"
+
             android:inputType="textPersonName"
             android:layout_margin="5dp"
             android:autofillHints="username"/>
@@ -89,6 +90,15 @@
         android:layout_marginTop="20dp"
         android:textColor="@color/gray_100"
         android:text="@string/registro_btn1"/>
+
+    <Button
+        android:id="@+id/cargar"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        android:textColor="@color/gray_100"
+        android:text="cargar"
+        android:visibility="invisible"/>
 
     <LinearLayout
         android:layout_width="match_parent"

@@ -21,45 +21,50 @@ tools:context=".PoliticaUsoFragment">
     android:layout_marginEnd="5dp"
     android:layout_marginBottom="10dp"/>
 
-<androidx.core.widget.NestedScrollView
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="4"
-    android:padding="15dp">
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="4"
+        android:padding="15dp">
 
-    <TextView
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_politica_uso"
+            android:textSize="16dp"
+            android:fontFamily="sans-serif"/>
+
+    </androidx.core.widget.NestedScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <CheckBox
+            android:id="@+id/uso_check_aceptar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Acepto"
+            android:textSize="15sp"
+            android:layout_marginEnd="30dp"/>
+
+<!--        <CheckBox
+            android:id="@+id/uso_check_negar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="No acepto"
+            android:textSize="15sp"
+            android:layout_marginStart="30dp"/>-->
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/uso_btn_volver"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/texto_politica_uso"
-        android:textSize="16dp"
-        android:fontFamily="sans-serif"/>
-
-</androidx.core.widget.NestedScrollView>
-
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="0dp"
-    android:layout_weight="1"
-    android:orientation="horizontal"
-    android:gravity="center">
-
-    <CheckBox
-        android:id="@+id/privacidad_check_aceptar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Acepto"
-        android:textSize="15sp"
-        android:layout_marginEnd="30dp"/>
-
-    <CheckBox
-        android:id="@+id/privacidad_check_negar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="No acepto"
-        android:textSize="15sp"
-        android:layout_marginStart="30dp"/>
-
-</LinearLayout>
-
+        android:text="volver"/>
 
 </LinearLayout>

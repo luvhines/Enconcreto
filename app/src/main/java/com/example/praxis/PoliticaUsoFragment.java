@@ -7,65 +7,41 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.CheckBox;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PoliticaUsoFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PoliticaUsoFragment extends Fragment implements View.OnClickListener{
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
-
-    public PoliticaUsoFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment PoliticaUsoFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static PoliticaUsoFragment newInstance(String param1, String param2) {
-        PoliticaUsoFragment fragment = new PoliticaUsoFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    private CheckBox ckAceptar;
+    private Button btnVolver;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View fragment = inflater.inflate(R.layout.fragment_politica_uso, container, false);
+        View fragmento = inflater.inflate(R.layout.fragment_politica_uso, container, false);
 
-        return fragment;
+        ckAceptar = (CheckBox) fragmento.findViewById(R.id.uso_check_aceptar);
+        btnVolver = (Button) fragmento.findViewById(R.id.uso_btn_volver);
+        btnVolver.setOnClickListener(this);
+
+        return fragmento;
     }
 
     @Override
     public void onClick(View v) {
+        if (ckAceptar.isChecked() == true){
+            Bundle result = new Bundle();
+            result.putString("dato", "RETORNADO 2");
+            result.putBoolean("ckUso", true);
+            getParentFragmentManager().setFragmentResult("uso", result);
+        }
 
+        getActivity().getSupportFragmentManager().popBackStackImmediate();
     }
 }
