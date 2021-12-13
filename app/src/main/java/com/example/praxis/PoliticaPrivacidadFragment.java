@@ -17,12 +17,17 @@ public class PoliticaPrivacidadFragment extends Fragment implements View.OnClick
 
     private Button btnVolver;
     private Boolean fuente;
+    private Boolean campoNulo;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        campoNulo = true;
 
         super.onCreate(savedInstanceState);
-        fuente = getArguments().getBoolean("desdeAct2");
+        if (getArguments()!= null) {
+            fuente = getArguments().getBoolean("desdeAct2");
+            campoNulo = false;
+        }
     }
 
     @Override
@@ -35,8 +40,10 @@ public class PoliticaPrivacidadFragment extends Fragment implements View.OnClick
         btnVolver = (Button) fragmento.findViewById(R.id.priv_btn_volver);
         btnVolver.setOnClickListener(this);
 
-        if (fuente == true){
-            ckAceptar.setVisibility(View.INVISIBLE);
+        if (!campoNulo){
+            if (fuente == true){
+                ckAceptar.setVisibility(View.INVISIBLE);
+            }
         }
 
         return fragmento;
