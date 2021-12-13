@@ -4,7 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/fondo1"
-    tools:context=".InicioFragment">
+    tools:context=".InicioFragment"
+    android:id="@+id/InicioFragment">
 
 
     <LinearLayout
@@ -91,6 +92,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/act1_texto_btn"
             android:textColor="@color/gray_100"
+
             android:textSize="20sp"
             />
 
@@ -110,6 +112,7 @@
             android:layout_marginTop="10dp"
             android:text="@string/act1_texto_btn2"
             android:textColor="@color/gray_100"
+
             android:textSize="15sp"
             />
 

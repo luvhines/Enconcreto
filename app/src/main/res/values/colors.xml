@@ -16,5 +16,7 @@
     <color name="gray_100">#AAAAAA</color>
     <color name="blue">#5680D5</color>
     <color name="azul_800">#2C527F</color>;
-
+    <color name="sublime">#4B4A55</color>
+    <color name="sublime2">#3B3770</color>
+    <color name="sublime3">#E9E9E9</color>
 </resources>

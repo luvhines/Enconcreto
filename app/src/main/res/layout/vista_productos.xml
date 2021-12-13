@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:layout_margin="3dp"
+        android:background="@color/sublime3"
+
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/campo_imagen"
+            android:layout_width="160dp"
+            android:layout_height="160dp"
+            android:padding="4dp"/>
+
+        <LinearLayout
+            android:layout_width="160dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="5dp">
+
+            <TextView
+                android:id="@+id/texto_titulo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Titulo"
+                android:textStyle="bold"
+                android:textSize="23sp" />
+
+            <TextView
+                android:id="@+id/texto_contenido"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Contenido"
+                android:layout_marginStart="5dp"/>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#D0D0D0"
+        android:text="Contenido"
+        />-->
+</LinearLayout>

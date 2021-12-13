@@ -14,10 +14,12 @@ public class PoliticaUsoFragment extends Fragment implements View.OnClickListene
 
     private CheckBox ckAceptar;
     private Button btnVolver;
+    private Boolean fuente;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        fuente = getArguments().getBoolean("desdeAct2");
     }
 
     @Override
@@ -30,6 +32,9 @@ public class PoliticaUsoFragment extends Fragment implements View.OnClickListene
         btnVolver = (Button) fragmento.findViewById(R.id.uso_btn_volver);
         btnVolver.setOnClickListener(this);
 
+        if (fuente == true){
+            ckAceptar.setVisibility(View.INVISIBLE);
+        }
         return fragmento;
     }
 

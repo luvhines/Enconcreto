@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+    <item android:title="@string/menu_titulo_principal">
+        <menu>
+
+            <item
+                android:id="@+id/item_productos"
+                android:icon="@drawable/ic_productos"
+                android:title="@string/menu_productos">
+            </item>
+            <item
+                android:id="@+id/item_servicios"
+                android:icon="@drawable/ic_servicios"
+                android:title="@string/menu_servicios">
+            </item>
+            <item
+                android:id="@+id/item_pagos"
+                android:icon="@drawable/ic_pagos"
+                android:title="@string/menu_pagos">
+            </item>
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_titulo_politicas">
+        <menu>
+            <item
+                android:id="@+id/item_pol_uso"
+                android:icon="@drawable/ic_politica"
+                android:title="@string/menu_politica_uso">
+            </item>
+            <item
+                android:id="@+id/item_por_privacidad"
+                android:icon="@drawable/ic_politica"
+                android:title="@string/registro_politica_privacidad">
+            </item>
+        </menu>
+    </item>
+
+    <item android:title="@string/menu_titulo_sesion">
+        <menu>
+            <item
+                android:id="@+id/item_salir"
+                android:icon="@drawable/ic_salir"
+                android:title="@string/menu_salir">
+            </item>
+        </menu>
+    </item>
+</menu>

@@ -16,11 +16,13 @@ public class PoliticaPrivacidadFragment extends Fragment implements View.OnClick
     private CheckBox ckAceptar;
 
     private Button btnVolver;
-
+    private Boolean fuente;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
+        fuente = getArguments().getBoolean("desdeAct2");
     }
 
     @Override
@@ -32,6 +34,10 @@ public class PoliticaPrivacidadFragment extends Fragment implements View.OnClick
         ckAceptar = (CheckBox) fragmento.findViewById(R.id.privacidad_check_aceptar);
         btnVolver = (Button) fragmento.findViewById(R.id.priv_btn_volver);
         btnVolver.setOnClickListener(this);
+
+        if (fuente == true){
+            ckAceptar.setVisibility(View.INVISIBLE);
+        }
 
         return fragmento;
     }

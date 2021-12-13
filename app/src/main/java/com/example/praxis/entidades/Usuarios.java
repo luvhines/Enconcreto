@@ -3,8 +3,10 @@ import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Usuarios {
+public class Usuarios implements Serializable{
     //establecemos una llave primaria autoincremental
     @PrimaryKey(autoGenerate = true)
     int id;
@@ -21,7 +23,10 @@ public class Usuarios {
     @ColumnInfo(name = "usr_password")
     String usrPassword;
 
+    public  Usuarios(){}
+
     public Usuarios(String usrNombre, String usrApellido, String usrMail ,String usrPassword) {
+        //this.id = id;
         this.usrNombre = usrNombre;
         this.usrApellido = usrApellido;
         this.usrMail = usrMail;

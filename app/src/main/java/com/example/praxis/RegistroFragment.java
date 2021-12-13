@@ -1,39 +1,43 @@
 package com.example.praxis;
 
-import android.os.AsyncTask;
+import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
 
-import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentResultListener;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.room.Room;
-
 import android.os.Handler;
 import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.praxis.entidades.Usuarios;
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.io.Serializable;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class RegistroFragment extends Fragment implements View.OnClickListener, FragmentResultListener, Runnable{
+public class RegistroFragment extends Fragment implements View.OnClickListener, FragmentResultListener, OnSuccessListener ,Runnable{
 
     TextView terminosUso, politicaPrivacidad , campoNombre, campoApellido, campoEmail, campoPassword;
     private boolean flagPrivacidad , flagUso;
@@ -49,44 +53,52 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
 
     String cadena  = "";
 
-    //Definimos variabes para almacenamiento en la nube
-    FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    Context context;
+    FragmentManager fragmentManager;
+
+    Usuarios datosUsuario;
 
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        context = getContext();
+        fragmentManager = getParentFragmentManager();
+
         getParentFragmentManager().setFragmentResultListener("privacidad", this, this);
         getParentFragmentManager().setFragmentResultListener("uso", this, this);
 
         executor = Executors.newSingleThreadExecutor();
         handler = new Handler(Looper.getMainLooper());
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View fragmento =  inflater.inflate(R.layout.fragment_registro, container, false);
 
         //Campos que deben ser guardados en la base de datos
-        campoNombre = (TextView) fragmento.findViewById(R.id.reg_nombre);
-        campoApellido = (TextView) fragmento.findViewById(R.id.reg_apellido);
-        campoEmail = (TextView) fragmento.findViewById(R.id.reg_email);
-        campoPassword = (TextView) fragmento.findViewById(R.id.reg_password);
-        btnCrearCuenta = (Button) fragmento.findViewById(R.id.btn_crear_registrp);
-        btnCargar = (Button) fragmento.findViewById(R.id.cargar);
+        campoNombre =  fragmento.findViewById(R.id.reg_nombre);
+        campoApellido = fragmento.findViewById(R.id.reg_apellido);
+        campoEmail = fragmento.findViewById(R.id.reg_email);
+        campoPassword = fragmento.findViewById(R.id.reg_password);
+        btnCrearCuenta =fragmento.findViewById(R.id.btn_crear_registrp);
+        btnCargar = fragmento.findViewById(R.id.cargar);
 
         //enlaces a los fragmentos de politicas
-        terminosUso = (TextView) fragmento.findViewById(R.id.reg_term_uso);
-        politicaPrivacidad = (TextView) fragmento.findViewById(R.id.reg_pol_privacidad);
+        terminosUso = fragmento.findViewById(R.id.reg_term_uso);
+        politicaPrivacidad =  fragmento.findViewById(R.id.reg_pol_privacidad);
 
         //escuchadores
         btnCrearCuenta.setOnClickListener(this);
         btnCargar.setOnClickListener(this);
         terminosUso.setOnClickListener(this);
         politicaPrivacidad.setOnClickListener(this);
+
 
         return fragmento;
     }
@@ -101,8 +113,9 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
                         & !(campoEmail.getText().toString().equals(""))
                         & !(campoPassword.getText().toString().equals(""))
                 ){
-                    if (flagUso == true && flagPrivacidad == true){
+                    if (flagUso && flagPrivacidad == true){
                         flagHilo=1;
+                        //Activamos el hilo
                         executor.execute(this);
                     }else{
                         Toast.makeText(this.getContext(), "Por favor acepte nuestras politicas", Toast.LENGTH_LONG).show();
@@ -111,7 +124,7 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
                     Toast.makeText(this.getContext(), "¡Hay campos vacios¡", Toast.LENGTH_LONG).show();
                     resaltarVacios();
                 }
-                ;break;
+                break;
 
             case R.id.reg_term_uso:
                 //Cargamos el fragment de politica de uso
@@ -121,7 +134,7 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
                         .replace(R.id.container_1, PoliticaUsoFragment.class, null,"politicaUso")
                         .addToBackStack("politicaUso")
                         .commit();
-                ;break;
+                break;
 
             case R.id.reg_pol_privacidad:
                 //Cargamos el fragment de politica de privacidad
@@ -131,12 +144,12 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
                         .replace(R.id.container_1, PoliticaPrivacidadFragment.class, null,"politicaPrivacidad")
                         .addToBackStack("politicaPrivacidad")
                         .commit();
-                ;break;
+                break;
 
             case R.id.cargar:
                 flagHilo=2;
                 executor.execute(this);
-                ;break;
+                break;
         }
     }
 
@@ -148,12 +161,12 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
             case "privacidad":
                 dato = result.getString("dato");
                 flagPrivacidad = result.getBoolean("ckPrivacidad");
-                ;break;
+                break;
 
             case "uso":
                 dato = result.getString("dato");
                 flagUso = result.getBoolean("ckUso");
-                ;break;
+                break;
         }
 
     }
@@ -164,7 +177,7 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
         switch (flagHilo){
             case 1:
                 //Guardamos los datos en la base de datos
-                db = Room.databaseBuilder(this.getContext(), AppDataBase.class,
+                db = Room.databaseBuilder(context, AppDataBase.class,
                         "enconcretoDB").build();
 
                 Usuarios usuario = new Usuarios(campoNombre.getText().toString(),
@@ -178,32 +191,37 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
                     //Enviamos el usuario ala base de datos
                     db.usuariosDao().insert(usuario);
                     flagHilo = 0;
-                    //guardar en la nuve
-                    guardareEnNube(usuario);
+                    //guardar en la nube
 
-                    //Por medio de un handler accedemos a la ui
+                    //leemos el ultimo usuario de la base de datos local para acceder a su id
+                    List<Usuarios> listaLocal = db.usuariosDao().getAll();
+                    int index = listaLocal.size();
+
+                    //Enviamos el usuario a firebase
+                    guardareEnNube(listaLocal.get(index-1));
+
+                    //Por medio de un handler accedemos a la ui para mostrar un mensaje
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getContext(), "Cuenta creada", Toast.LENGTH_LONG).show();
-                            //getActivity().getSupportFragmentManager().popBackStackImmediate();
+                            Toast.makeText(context, "Cuenta creada", Toast.LENGTH_LONG).show();
                         }
                     });
                 }else {
-                    //Por medio de un handler accedemos a la ui
+                    //Por medio de un handler accedemos a la ui para mostrar un mensaje
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getContext(), "Este usurio ya existe", Toast.LENGTH_LONG).show();
+                            Toast.makeText(context, "Este usurio ya existe", Toast.LENGTH_LONG).show();
                         }
                     });
                 }
 
-                ;break;
+                break;
 
             case 2:
-                //leemos todos los usuarios en la base de datos
-                db = Room.databaseBuilder(this.getContext(), AppDataBase.class,
+                //leemos todos los usuarios en la base de datos local
+                db = Room.databaseBuilder(context, AppDataBase.class,
                         "enconcretoDB").build();
 
                 List<Usuarios> lista = db.usuariosDao().getAll();
@@ -225,19 +243,24 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
                         getContext().deleteDatabase("enconcretoDB");
                     }
                 });
-                ;break;
+                break;
         }
     }
 
     private void guardareEnNube(Usuarios usuario) {
-        //inicializamos Firebase
-        FirebaseApp.initializeApp(getContext());
-        firebaseDatabase = FirebaseDatabase.getInstance();
-        databaseReference = firebaseDatabase.getReference();
-
         //enviamos los datos a la nube
-        databaseReference.child("PERSONAS").child(String.valueOf(usuario.getId())).setValue(usuario);
 
+        Map<String, Object> user = new HashMap<>();
+        user.put("nombre", usuario.getUsrNombre());
+        user.put("apellido", usuario.getUsrApellido());
+        user.put("mail", usuario.getUsrMail());
+        user.put("password", usuario.getUsrPassword());
+
+        MainActivity.firestoreDB.collection("USUARIOS")
+                .add(user)
+                .addOnSuccessListener(this);
+
+        datosUsuario = usuario;
     }
 
     private void resaltarVacios()
@@ -257,4 +280,14 @@ public class RegistroFragment extends Fragment implements View.OnClickListener, 
     }
 
 
+    @Override
+    public void onSuccess(Object o) {
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("usuario", datosUsuario);
+        fragmentManager.setFragmentResult("registro", bundle);
+
+        Activity actividad = getActivity();
+        if (actividad != null)
+            getActivity().onBackPressed();
+    }
 }

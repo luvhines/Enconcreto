@@ -13,20 +13,25 @@ import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.google.firebase.firestore.FirebaseFirestore;
 
+public class MainActivity extends AppCompatActivity{
+
+    public static FirebaseFirestore firestoreDB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        firestoreDB = FirebaseFirestore.getInstance();
 
         if (savedInstanceState == null)
         {
             getSupportFragmentManager().beginTransaction()
                     .setReorderingAllowed(true)
                     .add(R.id.container_1, InicioFragment.class, null,"addf1")
+                    .addToBackStack("inicio")
                     .commit();
         }
 

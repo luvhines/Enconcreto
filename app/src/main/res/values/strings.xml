@@ -64,4 +64,20 @@
     </string>
 
 
+    <string name="open">open</string>
+    <string name="close">close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="menu_productos">Products</string>
+    <string name="menu_servicios">Services</string>
+    <string name="menu_pagos">Payments</string>
+    <string name="menu_politica_uso">Policy of use</string>
+    <string name="menu_politica_privacidad">Privacy Policy</string>
+    <string name="menu_titulo_principal">Principal</string>
+    <string name="menu_titulo_politicas">Politics</string>
+    <string name="menu_titulo_sesion">Session</string>
+    <string name="menu_salir">Logout</string>
+
+
 </resources>
